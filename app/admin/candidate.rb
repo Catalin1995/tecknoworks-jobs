@@ -23,6 +23,18 @@ ActiveAdmin.register Candidate do
     column :phone_number
     column :email
     column :job
+    column "List" do |candidate|
+      para link_to "List of interviews", admin_candidate_interviews_path(candidate)
+    end
+    column 'Create' do |candidate|
+      para link_to "Create new interview", new_admin_candidate_interview_path(candidate)
+    end
+    column "List" do |candidate|
+      para link_to "List of attachments", admin_candidate_attachments_path(candidate)
+    end
+    column 'Create' do |candidate|
+      para link_to "Create new attachment", new_admin_candidate_attachment_path(candidate)
+    end
     actions
   end
 
