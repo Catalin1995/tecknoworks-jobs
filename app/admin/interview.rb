@@ -1,4 +1,5 @@
 ActiveAdmin.register Interview do
+  belongs_to :candidate
   permit_params :candidate_id, :status, :user_id
 
   index do

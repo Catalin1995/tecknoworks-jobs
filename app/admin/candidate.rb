@@ -8,6 +8,13 @@ ActiveAdmin.register Candidate do
     end
   end
 
+  sidebar "Interviews", only: [:show] do
+    ul do
+      li link_to "List of interviews", admin_candidate_interviews_path(candidate)
+      li link_to "Create new interview", new_admin_candidate_interview_path(candidate)
+    end
+  end
+
   index do
     selectable_column
     column :id

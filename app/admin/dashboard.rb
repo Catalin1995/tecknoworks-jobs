@@ -40,10 +40,10 @@ ActiveAdmin.register_page 'Dashboard' do
             fieldset class: :actions do
               ul do
                 li class: :cancel do
-                  link_to 'Add an interview', new_admin_interview_path
+                  # link_to 'Add an interview', new_admin_interview_path
                 end
                 li class: :cancel do
-                  link_to 'View interviews', admin_interviews_path
+                  # link_to 'View interviews', admin_interviews_path
                 end
               end
             end
