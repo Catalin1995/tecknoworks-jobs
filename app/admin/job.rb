@@ -22,8 +22,6 @@ ActiveAdmin.register Job do
       end
     end
     column :title
-    column :created_at
-    column :updated_at
     actions
   end
 

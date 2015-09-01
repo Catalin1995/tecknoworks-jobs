@@ -7,8 +7,6 @@ ActiveAdmin.register Attachment do
     column :candidate
     column :user
     column :file
-    column :created_at
-    column :updated_at
     actions
   end
 

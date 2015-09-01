@@ -8,8 +8,6 @@ ActiveAdmin.register Candidate do
     column :phone_number
     column :email
     column :job
-    column :created_at
-    column :updated_at
     actions
   end
 

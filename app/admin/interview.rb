@@ -12,8 +12,6 @@ ActiveAdmin.register Interview do
     end
     column :candidate
     column :user
-    column :created_at
-    column :updated_at
     actions
   end
 
