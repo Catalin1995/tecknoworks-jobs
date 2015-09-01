@@ -1,4 +1,5 @@
 ActiveAdmin.register Attachment do
+  belongs_to :candidate
   permit_params :user_id, :status, :file, :candidate_id
 
   index do
