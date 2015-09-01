@@ -45,8 +45,8 @@ end
 #
 # This means using valid random crendetials will result in creating
 # a user (in ActiveAdmin)
-# class Ldap
-  # def valid?(auth_hash)
-    # true
-  # end
-# end
+class Ldap
+  def valid?(auth_hash)
+    true
+  end
+end
