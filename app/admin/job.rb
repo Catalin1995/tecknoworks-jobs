@@ -1,6 +1,6 @@
 ActiveAdmin.register Job do
   permit_params :description, :status
-
+  config.filters = false
   actions :all, except: [:show]
 
   sidebar "Candidates", only: [:edit] do
@@ -29,10 +29,10 @@ ActiveAdmin.register Job do
       end
     end
     column :title
-    column "List" do |job|
+    column "List of candidates" do |job|
       para link_to "List of candidates", admin_job_candidates_path(job)
     end
-    column 'Create' do |job|
+    column 'Create new candidate' do |job|
       para link_to "Create new candidate", new_admin_job_candidate_path(job)
     end
     actions

@@ -1,5 +1,6 @@
 ActiveAdmin.register Candidate do
   belongs_to :job
+  config.filters = false
   permit_params :full_name, :phone_number, :email, :job_id
 
   sidebar "Attachments", only: [:show] do
@@ -23,16 +24,16 @@ ActiveAdmin.register Candidate do
     column :phone_number
     column :email
     column :job
-    column "List" do |candidate|
+    column "List of interviews" do |candidate|
       para link_to "List of interviews", admin_candidate_interviews_path(candidate)
     end
-    column 'Create' do |candidate|
+    column 'Create new interview' do |candidate|
       para link_to "Create new interview", new_admin_candidate_interview_path(candidate)
     end
-    column "List" do |candidate|
+    column "List of attachments" do |candidate|
       para link_to "List of attachments", admin_candidate_attachments_path(candidate)
     end
-    column 'Create' do |candidate|
+    column 'Create new attachment' do |candidate|
       para link_to "Create new attachment", new_admin_candidate_attachment_path(candidate)
     end
     actions

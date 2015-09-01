@@ -1,5 +1,6 @@
 ActiveAdmin.register Attachment do
   belongs_to :candidate
+  config.filters = false
   permit_params :user_id, :status, :file, :candidate_id
 
   index do
