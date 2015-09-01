@@ -1,4 +1,5 @@
 ActiveAdmin.register Candidate do
+  belongs_to :job
   permit_params :full_name, :phone_number, :email, :job_id
 
   sidebar "Attachments", only: [:show] do

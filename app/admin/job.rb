@@ -3,6 +3,13 @@ ActiveAdmin.register Job do
 
   actions :all, except: [:show]
 
+  sidebar "Candidates", only: [:edit] do
+    ul do
+      li link_to "List of candidates", admin_job_candidates_path(job)
+      li link_to "Create new candidate", new_admin_job_candidate_path(job)
+    end
+  end
+
   controller do
     def scoped_collection
       super.where.not(status: Job::DASHBOARD)

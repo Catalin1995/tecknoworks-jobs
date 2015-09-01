@@ -27,11 +27,11 @@ ActiveAdmin.register_page 'Dashboard' do
             fieldset class: :actions do
               ul do
                 li class: :cancel do
-                  link_to 'Add a candidate', new_admin_candidate_path
+                  # link_to 'Add a candidate', new_admin_candidate_path
                 end
                 li class: :cancel do
                   # Needs to be able to filter by job
-                  link_to 'View candidates', admin_candidates_path
+                  # link_to 'View candidates', admin_candidates_path
                 end
               end
             end
