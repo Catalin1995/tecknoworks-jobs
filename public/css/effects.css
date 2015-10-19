@@ -1,11 +1,13 @@
-.list-jobs { cursor: pointer; }
+.list-jobs {
+  cursor: pointer;
+  }
 
 .job_description {
   text-align: justify;
 }
 
 #preview {
-  height: 680px;
+  height: 713px;
   width: auto;
   display: block;
   overflow: auto;
