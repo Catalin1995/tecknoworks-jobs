@@ -14,17 +14,21 @@
   <div  class="col-md-12">
     <table class='table table-striped'>
       <tr align='center'>
-        <td><b>Id<b></td>
-        <td><b>Title<b></td>
-        <td><b>Status<b></td>
-        <td><b>Candidates<b></td>
-        <td><b>Candidates without interviews<b></td>
-        <td><b>Options<b></td>
+        <td><b>Id</b></td>
+        <td><b>Title</b></td>
+        <td><b>Status</b></td>
+        <td><b>Candidates</b></td>
+        <td><b>Candidates without interviews</b></td>
+        <td><b>Options</b></td>
       </tr>
       <tr align='center' ng-repeat='job in jobs'>
         <td><a ng-href='/user_tkw/jobs/{{job.id}}'>{{job.id}}</a></td>
         <td><a ng-href='/user_tkw/jobs/{{job.id}}'>{{job.title}}</a></td>
-        <td>{{status[job.status]}}</td>
+        <td>
+          <select ng-change="save(job.id)" class="selectpicker form-control" ng-model='jobHashStatus[job.id].number'>
+            <option ng-repeat='stat in status' value='{{stat.number}}'> {{stat.text}} </option>
+          </select>
+        </td>
         <td>{{job.candidates_count}}</td>
         <td>{{job.candidates_without_interview}}</td>
         <td>
