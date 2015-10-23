@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Candidate, type: :routing do
   it 'routes to #index' do
     expect(get: '/api/candidates').to route_to(controller: 'candidates', action: 'index', format: :json)
+    expect(get: '/api/all_candidates').to route_to(controller: 'candidates', action: 'all_candidates', format: :json)
   end
 
   it 'routes to #show' do

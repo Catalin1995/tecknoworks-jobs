@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get '/logged/:id', to: 'users#logged'
     delete '/logout/:id', to: 'users#logout'
     resources :jobs, only: [:index, :show, :create, :destroy, :update]
+    get '/all_candidates', to: 'candidates#all_candidates'
     resources :candidates, only: [:index, :show, :create, :destroy, :update]
     resources :interviews, only: [:index, :show, :create, :destroy]
     resources :attachments, only: [:index, :show, :create, :destroy]
