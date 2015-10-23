@@ -34,3 +34,9 @@ setCookie = function(key){
   Cookies.set('key_id', key['id']);
   Cookies.set('user_id', key['user_id']);
 }
+
+generateTimeFormat = function(time){
+  return moment(time).year() + '-' + moment(time).month() + '-' +
+  moment(time).day() + ' ' + moment(time).hour() + ':' +
+  moment(time).minute()
+}

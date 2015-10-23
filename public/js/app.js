@@ -3,9 +3,11 @@ var app = angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap.datetime
 var $ = function (id) { return document.getElementById(id); };
 
 app.controller('MainController', ['$scope', '$http', function($scope, $http, $routeParams) {
-  $scope.candidate = {}
+  $scope.candidate = {};
   $scope.jobs = [];
-  $scope.dictionaryJobs = {}
+  $scope.dictionaryJobs = {};
+  $scope.candidates = [];
+  $scope.selectedCandidate = null;
 
   generateDictionaryJobs = function(){
     for (var i = 0; i<$scope.jobs.length; i++){
@@ -24,20 +26,56 @@ app.controller('MainController', ['$scope', '$http', function($scope, $http, $ro
     });
   }
 
+  $scope.createInterview = function(){
+    var timeString = generateTimeFormat($scope.data.date)
+    var interviewHash = {date_and_time: timeString, candidate_id: $scope.selectedCandidate}
+    console.log(timeString)
+
+    $http.post('api/interviews' + generateUrlKey(), {interview: interviewHash}).
+    success(function(data){
+      var candidateId = data['body']['candidate_id'];
+      var jobId = getIdJob(candidateId);
+      var interviewId = data['body']['id'];
+
+      // window.location.href = "/user_tkw/jobs/" + jobId + '/candidates/' + candidateId + '/interview/' + interviewId;
+    }).
+    error(function(data, status, headers, config) {
+      logged(data)
+    });
+  }
+
+  getIdJob = function(candidateId){
+    for( var i=0; i<$scope.candidates.length; i++){
+      if( String($scope.candidates[i].id) == String(candidateId) ){
+        return $scope.candidates[i].job_id
+      }
+    }
+  }
+
   $http.get('/api/logged/' + Cookies.get('key_id') + generateUrlKey()).
   success(function(data){
     createMenu(true);
-    get_jobs();
+    getJobs();
+    getCandidates();
   }).
   error(function(data){
     createMenu(false);
   });
 
-  get_jobs = function(){
+  getJobs = function(){
     $http.get('/api/jobs' + generateUrlKey()).
     success(function(data){
-      $scope.jobs = data['body']
+      $scope.jobs = data['body'];
       generateDictionaryJobs();
+    }).
+    error(function(data){
+    });
+  }
+
+  getCandidates = function(){
+    $http.get('/api/all_candidates' + generateUrlKey()).
+    success(function(data){
+      $scope.candidates = data['body'];
     }).
     error(function(data){
     });

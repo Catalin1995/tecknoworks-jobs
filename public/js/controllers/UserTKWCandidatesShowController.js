@@ -52,17 +52,10 @@ app.controller('UserTKWCandidatesShowController', function ($scope, $http, $rout
     });
   }
 
-  generateTimeFormat = function(time){
-    return moment(time).year() + '-' + moment(time).month() + '-' +
-    moment(time).day() + ' ' + moment(time).hour() + ':' +
-    moment(time).minute()
-  }
-
   $scope.createInterview = function(){
     var timeString = generateTimeFormat($scope.data.date)
     var interviewHash = {date_and_time: timeString, candidate_id: $scope.candidate.id}
-    console.log(interviewHash)
-    $http.post('api/interviews'  + generateUrlKey(), {interview: interviewHash}).
+    $http.post('api/interviews' + generateUrlKey(), {interview: interviewHash}).
     success(function(data){
       getInterviews();
     }).
