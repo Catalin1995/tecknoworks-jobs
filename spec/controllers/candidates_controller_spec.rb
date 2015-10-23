@@ -41,6 +41,34 @@ RSpec.describe CandidatesController, type: :controller do
     end
   end
 
+  describe 'GET all_candidates' do
+    it 'when user is logged' do
+      get :all_candidates, consumer_key: consumer_key, secret_key: secret_key, format: :json
+      expect(json[:code]).to eq(200)
+      expect(json[:body].count).to eq(0)
+
+      create :candidate, job_id: @job.id
+      get :all_candidates, consumer_key: consumer_key, secret_key: secret_key, format: :json
+      expect(json[:code]).to eq(200)
+      expect(json[:body].count).to eq(1)
+
+      create :candidate, job_id: @job.id
+      create :candidate, job_id: @job2.id
+
+      get :all_candidates, consumer_key: consumer_key, secret_key: secret_key, format: :json
+      expect(json[:code]).to eq(200)
+      expect(json[:body].count).to eq(3)
+    end
+
+    it 'when user is not logged' do
+      create :candidate, job_id: @job.id
+
+      get :all_candidates, consumer_key: '', secret_key: '', format: :json
+      expect(json[:code]).to eq(400_001)
+      expect(json[:body]).to eq('You are not logged')
+    end
+  end
+
   describe 'GET show' do
     it 'when user is logged' do
       candidate1 = create :candidate, job_id: @job.id

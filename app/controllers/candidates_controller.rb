@@ -8,6 +8,15 @@ class CandidatesController < ApplicationController
     end
   end
 
+  api :GET, '/api/jobs/:id/all_candidates', 'Return list of candidates'
+  def all_candidates
+    if logged(params)
+      @candidates = Candidate.all
+    else
+      render_response('You are not logged', 400_001)
+    end
+  end
+
   api :GET, '/api/jobs/:id/candidates/:id', 'Return candidate by id'
   def show
     if logged(params)
