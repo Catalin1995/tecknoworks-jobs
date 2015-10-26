@@ -36,7 +36,6 @@ setCookie = function(key){
 }
 
 generateTimeFormat = function(time){
-  return moment(time).year() + '-' + moment(time).month() + '-' +
-  moment(time).day() + ' ' + moment(time).hour() + ':' +
-  moment(time).minute()
+  return time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate() +
+  ' ' + time.getHours() + ':' + time.getMinutes()
 }
