@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap.datetimepicker', 'ngSanitize'] );
+var app = angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap.datetimepicker', 'ngSanitize', 'angularFileUpload'] );
 
 var $ = function (id) { return document.getElementById(id); };
 

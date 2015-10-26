@@ -1,4 +1,4 @@
-app.controller('UserTKWCandidatesShowController', function ($scope, $http, $routeParams) {
+app.controller('UserTKWCandidatesShowController', function ($scope, $http, $routeParams, FileUploader) {
   $scope.jobId = window.location.href.split('/')[5]
   $scope.candidateId = $routeParams.id
   $scope.job = {}
@@ -6,6 +6,7 @@ app.controller('UserTKWCandidatesShowController', function ($scope, $http, $rout
   $scope.interviews = []
   $scope.date = ''
   $scope.time = ''
+  $scope.uploader = new FileUploader();
 
   //########################## CANDIDATES ####################################
   $http.get('api/candidates/' + $scope.candidateId  + generateUrlKey()).
@@ -14,7 +15,7 @@ app.controller('UserTKWCandidatesShowController', function ($scope, $http, $rout
     getJob();
     getAttachments();
     getInterviews();
-    $scope.action = '/api/attachments' + generateUrlKey() + '&candidate_id=' + $scope.candidate.id
+    $scope.uploader.url = '/api/attachments' + generateUrlKey() + '&candidate_id=' + $scope.candidate.id
   }).
   error(function(data, status, headers, config) {
     logged(data)
@@ -79,4 +80,9 @@ app.controller('UserTKWCandidatesShowController', function ($scope, $http, $rout
       logged(data)
     });
   }
+
+  $scope.pushButton = function(){
+    console.log($scope.uploader)
+  }
+
 });
