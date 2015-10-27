@@ -1,48 +1,48 @@
 <div class="row">
-  <div class='col-md-6'>
+  <div class="col-md-6">
     <h2><b>Edit job</b></h2>
-    <div class='row'>
-      <div class='col-md-6'>
-        <input type='text' class="form-control" id='title-output' class='form-control' disabled>
+    <div class="row">
+      <div class="col-md-6">
+        <input type="text" class="form-control" id="title-output" class="form-control" disabled>
       </div>
-      <div class='col-md-6'>
-        <select class="selectpicker form-control" ng-model='select'>
-          <option ng-repeat='key in keys'>{{key}}</option>
+      <div class="col-md-6">
+        <select class="selectpicker form-control" ng-model="select">
+          <option ng-repeat="key in keys">{{key}}</option>
         </select>
       </div>
     </div>
   </div>
 </div>
 
-<div class='row'>
-  <div class='col-md-6'>
+<div class="row">
+  <div class="col-md-6">
     Markdown<br>
     <textarea
     style="font-family:monospace;"
     id="text-input" oninput="this.editor.update()"
-    rows='35' class='form-control' placeholder='Write the job'
+    rows="35" class="form-control" placeholder="Write the job"
     >##Write the **job** here.</textarea></br>
-    <button type="button" class="btn btn-success" ng-click='saveJob()'>
-      <span class='glyphicon glyphicon-upload'></span> Save Job
+    <button type="button" class="btn btn-success" ng-click="saveJob()">
+      <span class="glyphicon glyphicon-upload"></span> Save Job
     </button>
-    <button type="button" class="btn btn-danger" ng-click='deleteJob()'>
-      <span class='glyphicon glyphicon-trash'></span> Delete Job
+    <button type="button" class="btn btn-danger" ng-click="deleteJob()">
+      <span class="glyphicon glyphicon-trash"></span> Delete Job
     </button>
   </div>
 
-  <div class='col-md-6'>
+  <div class="col-md-6">
     Preview<br>
-    <div id='preview' class='form-control'>
+    <div id="preview" class="form-control">
       <div id="markout"></div>
     </div>
   </div>
 </div>
 
-<div class='row'>
-  <div class='col-md-12'>
-    <div class='back-box'>
-      <a ng-href='/user_tkw/jobs'>
-        <span class='glyphicon glyphicon-triangle-left'></span>
+<div class="row">
+  <div class="col-md-12">
+    <div class="back-box">
+      <a ng-href="/user_tkw/jobs">
+        <span class="glyphicon glyphicon-triangle-left"></span>
         <b>Back to all jobs</b>
       </a>
     </div>

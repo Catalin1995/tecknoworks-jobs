@@ -1,89 +1,89 @@
-<div class='row'>
-  <div class='col-md-6'>
+<div class="row">
+  <div class="col-md-6">
     <form>
       <h3> Edit candidate </h3>
 
-      <div class='form-group'>
-        <label class='control-label'>Name</label>
-        <input type='text' class='form-control' ng-model='candidate.full_name'>
+      <div class="form-group">
+        <label class="control-label">Name</label>
+        <input type="text" class="form-control" ng-model="candidate.full_name">
       </div>
 
-      <div class='form-group'>
-        <label class='control-label'>Phone Number</label>
-        <input type='text' class='form-control' ng-model='candidate.phone_number'>
+      <div class="form-group">
+        <label class="control-label">Phone Number</label>
+        <input type="text" class="form-control" ng-model="candidate.phone_number">
       </div>
 
-      <div class='form-group'>
-        <label class='control-label'>Email</label>
-        <input type='email' class='form-control' ng-model='candidate.email'>
+      <div class="form-group">
+        <label class="control-label">Email</label>
+        <input type="email" class="form-control" ng-model="candidate.email">
       </div>
 
-      <div class='form-group'>
-        <label class='control-label'>Job</label>
-        <select class="selectpicker form-control" ng-model='select'>
-          <option ng-repeat='key in keys'>{{key}}</option>
+      <div class="form-group">
+        <label class="control-label">Job</label>
+        <select class="selectpicker form-control" ng-model="select">
+          <option ng-repeat="key in keys">{{key}}</option>
         </select>
       </div>
 
-      <div class='form-group'>
-        <label class='control-label'>Source</label>
-        <input type='text' class='form-control' ng-model='candidate.source'>
+      <div class="form-group">
+        <label class="control-label">Source</label>
+        <input type="text" class="form-control" ng-model="candidate.source">
       </div>
 
-      <form class='form-group'>
-        <button type='submit' class='btn btn-success' ng-click='saveCandidate()'>
-          <span class='glyphicon glyphicon-upload'></span> Save
+      <form class="form-group">
+        <button type="submit" class="btn btn-success" ng-click="saveCandidate()">
+          <span class="glyphicon glyphicon-upload"></span> Save
         </button>
 
-        <button type='button' class='btn btn-danger' ng-click=deleteCandidate()>
-          <span class='glyphicon glyphicon-trash'></span> Delete
+        <button type="button" class="btn btn-danger" ng-click=deleteCandidate()>
+          <span class="glyphicon glyphicon-trash"></span> Delete
         </button>
       </form>
     </form>
   </div>
-  <div class='col-md-6'>
+  <div class="col-md-6">
   </div>
 </div>
 
 <hr style="border: 1px solid #D9D9D9 ;" />
 
-<div class='row'>
-  <div class='col-md-6'>
-    <table class='table table-striped'>
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-striped">
       <caption> List with attachments </caption>
-      <tr align='center'>
+      <tr align="center">
         <td>Attachment</td>
         <td>Added</td>
         <td>Options</td>
       </tr>
 
-      <tr align='center' ng-repeat='attachment in attachments'>
+      <tr align="center" ng-repeat="attachment in attachments">
         <td>{{file_name(attachment.file.file.url)}}</td>
         <td>{{attachment.user_name}}</td>
         <td>
-          <button type='button' class='btn btn-danger btn-sm' ng-disabled='userId != attachment.user_id' ng-click='deleteAttachment(attachment.id)'>
-            <span class='glyphicon glyphicon-trash'></span> Delete
+          <button type="button" class="btn btn-danger btn-sm" ng-disabled="userId != attachment.user_id" ng-click="deleteAttachment(attachment.id)">
+            <span class="glyphicon glyphicon-trash"></span> Delete
           </button>
         </td>
       </tr>
     </table>
   </div>
 
-  <div class='col-md-6'>
-    <table class='table table-striped'>
+  <div class="col-md-6">
+    <table class="table table-striped">
       <caption> List with interviews </caption>
-      <tr align='center'>
+      <tr align="center">
         <td>Date & Time</td>
         <td>Created By</td>
         <td>Options</td>
       </tr>
 
-      <tr align='center' ng-repeat='interview in interviews'>
+      <tr align="center" ng-repeat="interview in interviews">
         <td>{{interview.date}} at {{interview.time}}</td>
         <td>{{interview.user_name}}</td>
         <td>
-          <button type='button' class='btn btn-danger btn-sm' ng-disabled='userId != interview.user_id' ng-click='deleteInterview(interview.id)'>
-            <span class='glyphicon glyphicon-trash'></span> Delete
+          <button type="button" class="btn btn-danger btn-sm" ng-disabled="userId != interview.user_id" ng-click="deleteInterview(interview.id)">
+            <span class="glyphicon glyphicon-trash"></span> Delete
           </button>
         </td>
       </tr>
@@ -91,15 +91,15 @@
   </div>
 </div>
 
-<div class='row'>
-  <div class='col-md-12'>
-    <div class='back-box'>
-      <a ng-href='/user_tkw/jobs/{{job.id}}/candidates/{{candidate.id}}'>
-        <span class='glyphicon glyphicon-triangle-left'></span>
+<div class="row">
+  <div class="col-md-12">
+    <div class="back-box">
+      <a ng-href="/user_tkw/jobs/{{job.id}}/candidates/{{candidate.id}}">
+        <span class="glyphicon glyphicon-triangle-left"></span>
         <b>Back to candidate</b>
       </a> </br>
-      <a ng-href='/user_tkw/jobs/{{job.id}}'>
-        <span class='glyphicon glyphicon-triangle-left'></span>
+      <a ng-href="/user_tkw/jobs/{{job.id}}">
+        <span class="glyphicon glyphicon-triangle-left"></span>
         <b>Back to all jobs</b>
       </a>
     </div>

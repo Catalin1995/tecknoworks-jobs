@@ -1,11 +1,11 @@
-<div class='row'>
-  <div class='col-md-12'>
+<div class="row">
+  <div class="col-md-12">
     <h1> Interview  </h1>
     <h2>
-      Candidate: <a ng-href='/user_tkw/jobs/{{job.id}}/candidates/{{candidate.id}}'>
+      Candidate: <a ng-href="/user_tkw/jobs/{{job.id}}/candidates/{{candidate.id}}">
         {{candidate.full_name}}
       </a> <br>
-      Job: <a href='/user_tkw/jobs/{{job.id}}'>
+      Job: <a href="/user_tkw/jobs/{{job.id}}">
         {{job.title}}
       </a><br>
       Date & Time: {{interview.date}} at {{interview.time}}
@@ -15,10 +15,10 @@
 
 <br><br><br>
 
-<div class='row'>
-  <div class='col-md-12'>
+<div class="row">
+  <div class="col-md-12">
     <h2>Comments:</h2>
-    <div class='form-group' ng-repeat='interview in interviews'>
+    <div class="form-group" ng-repeat="interview in interviews">
       <hr style="border: 1px solid #D9D9D9 ;" />
       <h4> {{interview.user_name}}: </h4>
       <span>
@@ -27,21 +27,21 @@
     </div>
     <hr style="border: 1px solid #D9D9D9 ;" />
   </div>
-  <div class='col-md-12'>
+  <div class="col-md-12">
     <h3> Comment </h3>
-    <textarea rows='6' class='form-control' ng-model='commentText'
+    <textarea rows="6" class="form-control" ng-model="commentText"
     placeholder="Write a comment. You can write in format markdown"></textarea><br>
-    <button type='button' class='btn btn-default' ng-click='createComment()'>
-      <span class='glyphicon glyphicon-send'></span> Send
+    <button type="button" class="btn btn-default" ng-click="createComment()">
+      <span class="glyphicon glyphicon-send"></span> Send
     </button> </br></br>
   </div>
 </div>
 
-<div class='row'>
-  <div class='col-md-12'>
-    <div class='back-box'>
-      <a ng-href='/user_tkw/jobs'>
-        <span class='glyphicon glyphicon-triangle-left'></span>
+<div class="row">
+  <div class="col-md-12">
+    <div class="back-box">
+      <a ng-href="/user_tkw/jobs">
+        <span class="glyphicon glyphicon-triangle-left"></span>
         <b>Back to all jobs</b>
       </a>
     </div>

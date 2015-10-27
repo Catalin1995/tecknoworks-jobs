@@ -1,7 +1,7 @@
-<img id="imageid" ng-click='changeImage()' width="100%" height="auto"/>
+<img id="imageid" ng-click="changeImage()" width="100%" height="auto"/>
 </br></br>
 
-<div class='row'>
+<div class="row">
   <div  class="col-md-12">
     <h2><b>JOBS</b></h2>
   </div>
@@ -11,13 +11,13 @@
   <div  class="col-md-12">
     <ul class="list-group" >
       <li class="list-group-item ul list-jobs job" ng-repeat="job in jobs" ng-click="goTo(job)">
-        <div class='view-box'>
+        <div class="view-box">
           <a ng-href="/jobs/{{job.id}}">
             <b> {{job.title}} </b>
             <span class="glyphicon glyphicon-triangle-right"></span>
           </a>
-          <span class='pull-right'>
-            <div class='colored'>
+          <span class="pull-right">
+            <div class="colored">
               {{posted(job.posted_at)}}
             </div>
           </span>

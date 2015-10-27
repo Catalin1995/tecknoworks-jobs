@@ -1,19 +1,19 @@
-<div class='row'>
+<div class="row">
   <div  class="col-md-12">
     <h2><b>JOBS</b></h2>
   </div>
 </div>
 
-<div class='row'>
-  <div class='col-md-12'>
-    <a type='button' ng-href='/user_tkw/jobs/new' class='btn btn-success pull-right'>Create new job</a>
+<div class="row">
+  <div class="col-md-12">
+    <a type="button" ng-href="/user_tkw/jobs/new" class="btn btn-success pull-right">Create new job</a>
   </div>
 </div>
 
 <div class="row">
   <div  class="col-md-12">
-    <table class='table table-striped'>
-      <tr align='center'>
+    <table class="table table-striped">
+      <tr align="center">
         <td><b>Id</b></td>
         <td><b>Title</b></td>
         <td><b>Status</b></td>
@@ -21,12 +21,12 @@
         <td><b>Candidates without interviews</b></td>
         <td><b>Options</b></td>
       </tr>
-      <tr align='center' ng-repeat='job in jobs'>
-        <td><a ng-href='/user_tkw/jobs/{{job.id}}'>{{job.id}}</a></td>
-        <td><a ng-href='/user_tkw/jobs/{{job.id}}'>{{job.title}}</a></td>
+      <tr align="center" ng-repeat="job in jobs">
+        <td><a ng-href="/user_tkw/jobs/{{job.id}}">{{job.id}}</a></td>
+        <td><a ng-href="/user_tkw/jobs/{{job.id}}">{{job.title}}</a></td>
         <td>
-          <select ng-change="save(job.id)" class="selectpicker form-control" ng-model='jobHashStatus[job.id].number'>
-            <option ng-repeat='stat in status' value='{{stat.number}}'> {{stat.text}} </option>
+          <select ng-change="save(job.id)" class="selectpicker form-control" ng-model="jobHashStatus[job.id].number">
+            <option ng-repeat="stat in status" value="{{stat.number}}"> {{stat.text}} </option>
           </select>
         </td>
         <td>{{job.candidates_count}}</td>
@@ -36,8 +36,8 @@
             <span class="glyphicon glyphicon-cog" id="dropdownMenuJobs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             </span>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuJobs">
-              <li><a href="" ng-click='deleteJob(job.id)'><span class='glyphicon glyphicon-trash'> Delete</span></a></li>
-              <li><a href="/user_tkw/jobs/{{job.id}}/edit"><span class='glyphicon glyphicon-wrench'> Edit</span></a></li>
+              <li><a href="" ng-click="deleteJob(job.id)"><span class="glyphicon glyphicon-trash"> Delete</span></a></li>
+              <li><a href="/user_tkw/jobs/{{job.id}}/edit"><span class="glyphicon glyphicon-wrench"> Edit</span></a></li>
             </ul>
           </div>
         </td>

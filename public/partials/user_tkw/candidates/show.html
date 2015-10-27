@@ -1,20 +1,20 @@
-<div class='row'>
-  <div class='col-md-6'>
+<div class="row">
+  <div class="col-md-6">
     <h3> Name: {{candidate.full_name}} </h3>
     <h3> Phone number: {{candidate.phone_number}} </h3>
     <h3> Email: {{candidate.email}} </h3>
-    <h3> Job:<a ng-href='/user_tkw/jobs/{{job.id}}'> {{job.title}}</a></h3>
+    <h3> Job:<a ng-href="/user_tkw/jobs/{{job.id}}"> {{job.title}}</a></h3>
     <h3> Source: {{candidate.source}} </h3>
   </div>
 
-  <div class='col-md-6'>
+  <div class="col-md-6">
 
     <h3> Create an interview </h3>
-    <div class='row'>
-      <div class='col-md-12'>
+    <div class="row">
+      <div class="col-md-12">
         Set date and time
       </div>
-      <div class='col-md-8'>
+      <div class="col-md-8">
         <div class="dropdown">
           <div class="input-append">
             <div class="input-group">
@@ -33,9 +33,9 @@
         </div>
       </div>
 
-      <div class='col-md-3'>
-        <div class='form-group'>
-          <button type='button' ng-click='createInterview()' class='btn btn-success'>Create an Interview </button>
+      <div class="col-md-3">
+        <div class="form-group">
+          <button type="button" ng-click="createInterview()" class="btn btn-success">Create an Interview </button>
         </div>
       </div>
     </div>
@@ -43,13 +43,13 @@
     <hr style="border: 1px solid #D9D9D9 ;" />
 
     <h3> Add an attachment </h3>
-    <label class='control-label'>Select attachment(s)</label>
-    <input class='form-control' type="file" nv-file-select uploader="uploader"/><br/>
+    <label class="control-label">Select attachment(s)</label>
+    <input class="form-control" type="file" nv-file-select uploader="uploader"/><br/>
     <ul>
       <li ng-repeat="item in uploader.queue">
         Name: <span ng-bind="item.file.name"></span><br/>
-        <button class='btn btn-default btn-md'  ng-click="uploadFile(item)">Upload</button>
-        <button type='button' ng-click='cancel(item)'class='btn btn-default'>Cancel</button>
+        <button class="btn btn-default btn-md"  ng-click="uploadFile(item)">Upload</button>
+        <button type="button" ng-click="cancel(item)"class="btn btn-default">Cancel</button>
       </li>
     </ul>
 
@@ -58,56 +58,56 @@
 
 <hr style="border: 1px solid #D9D9D9 ;" />
 
-<div class='row'>
-  <div class='col-md-6'>
-    <table class='table table-striped'>
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-striped">
       <caption> List with attachments </caption>
-      <tr align='center'>
+      <tr align="center">
         <td><b>Attachment</b></td>
         <td><b>Added</b></td>
       </tr>
 
-      <tr align='center' ng-repeat='attachment in attachments'>
-        <td><a href='{{attachment.file.file.url}}' download target="_blank">{{fileName(attachment.file.file.url)}}</a></td>
+      <tr align="center" ng-repeat="attachment in attachments">
+        <td><a href="{{attachment.file.file.url}}" download target="_blank">{{fileName(attachment.file.file.url)}}</a></td>
         <td>{{attachment.user_name}}</td>
       </tr>
     </table>
   </div>
 
-  <div class = 'col-md-6'>
-    <table class='table table-striped'>
+  <div class = "col-md-6">
+    <table class="table table-striped">
       <caption> List with interviews </caption>
-      <tr align='center'>
+      <tr align="center">
         <td><b>Date & Time</b></td>
         <td><b>Created By</b></td>
       </tr>
-      <tr align='center' ng-repeat='interview in interviews'>
-        <td> <a ng-href='/user_tkw/jobs/{{job.id}}/candidates/{{candidate.id}}/interview/{{interview.id}}'>{{interview.date}} at {{interview.time}} </a> </td>
+      <tr align="center" ng-repeat="interview in interviews">
+        <td> <a ng-href="/user_tkw/jobs/{{job.id}}/candidates/{{candidate.id}}/interview/{{interview.id}}">{{interview.date}} at {{interview.time}} </a> </td>
         <td>{{interview.user_name}}</td>
       </tr>
     </table>
   </div>
 </div>
 
-<div class='row'>
-  <div class='col-md-12'>
+<div class="row">
+  <div class="col-md-12">
     <hr style="border: 1px solid #D9D9D9 ;" />
 
-    <button type='button' class='btn btn-danger' ng-click=deleteCandidate()>
-      <span class='glyphicon glyphicon-trash'></span> Delete Candidate
+    <button type="button" class="btn btn-danger" ng-click=deleteCandidate()>
+      <span class="glyphicon glyphicon-trash"></span> Delete Candidate
     </button>
 
-    <a type='button' href='/user_tkw/jobs/{{job.id}}/candidates/{{candidate.id}}/edit' class='btn btn-warning'>
-      <span class='glyphicon glyphicon-cog'></span> Edit Candidate
+    <a type="button" href="/user_tkw/jobs/{{job.id}}/candidates/{{candidate.id}}/edit" class="btn btn-warning">
+      <span class="glyphicon glyphicon-cog"></span> Edit Candidate
     </a>
 
-    <div class='back-box'>
-      <a ng-href='/user_tkw/jobs/{{job.id}}'>
-        <span class='glyphicon glyphicon-triangle-left'></span>
+    <div class="back-box">
+      <a ng-href="/user_tkw/jobs/{{job.id}}">
+        <span class="glyphicon glyphicon-triangle-left"></span>
         <b>Back to job</b>
       </a> </br>
-      <a ng-href='/user_tkw/jobs'>
-        <span class='glyphicon glyphicon-triangle-left'></span>
+      <a ng-href="/user_tkw/jobs">
+        <span class="glyphicon glyphicon-triangle-left"></span>
         <b>Back to all jobs</b>
       </a>
     </div>
