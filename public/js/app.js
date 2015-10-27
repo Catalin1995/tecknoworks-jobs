@@ -2,18 +2,38 @@ var app = angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap.datetime
 
 var $ = function (id) { return document.getElementById(id); };
 
-app.controller('MainController', ['$scope', '$http', function($scope, $http, $routeParams) {
+app.controller('MainController', function($scope, $http, $routeParams, FileUploader) {
   $scope.candidate = {};
   $scope.jobs = [];
   $scope.dictionaryJobs = {};
   $scope.candidates = [];
   $scope.selectedCandidate = null;
+  $scope.uploader = new FileUploader();
 
   generateDictionaryJobs = function(){
     for (var i = 0; i<$scope.jobs.length; i++){
-      $scope.dictionaryJobs[$scope.jobs[i]['title']] = $scope.jobs[i]['id']
+      $scope.dictionaryJobs[$scope.jobs[i]['title']] = $scope.jobs[i]['id'];
     }
-    $scope.keys = Object.keys($scope.dictionaryJobs)
+    $scope.keys = Object.keys($scope.dictionaryJobs);
+  }
+
+  candidateUrl = function(){
+    return '/api/attachments' + generateUrlKey() + '&candidate_id=' + $scope.selectedCandidate;
+  }
+
+  $scope.uploadFile = function(){
+    $scope.uploader.url = candidateUrl();
+    for(var i = 0; i < $scope.uploader.queue.length; i++){
+      $scope.uploader.queue[i].url = candidateUrl();
+      $scope.uploader.queue[i].upload()
+    }
+  }
+
+  $scope.cancel = function(item){
+    var index = $scope.uploader.queue.indexOf(item)
+    if (index > -1) {
+      $scope.uploader.queue.splice(index, 1);
+    }
   }
 
   $scope.addCandidate = function(){
@@ -29,7 +49,6 @@ app.controller('MainController', ['$scope', '$http', function($scope, $http, $ro
   $scope.createInterview = function(){
     var timeString = generateTimeFormat($scope.data.date)
     var interviewHash = {date_and_time: timeString, candidate_id: $scope.selectedCandidate}
-    console.log(timeString)
 
     $http.post('api/interviews' + generateUrlKey(), {interview: interviewHash}).
     success(function(data){
@@ -37,7 +56,7 @@ app.controller('MainController', ['$scope', '$http', function($scope, $http, $ro
       var jobId = getIdJob(candidateId);
       var interviewId = data['body']['id'];
 
-      // window.location.href = "/user_tkw/jobs/" + jobId + '/candidates/' + candidateId + '/interview/' + interviewId;
+      window.location.href = "/user_tkw/jobs/" + jobId + '/candidates/' + candidateId + '/interview/' + interviewId;
     }).
     error(function(data, status, headers, config) {
       logged(data)
@@ -130,7 +149,7 @@ app.controller('MainController', ['$scope', '$http', function($scope, $http, $ro
     window.location.href = '/jobs';
   }
 
-}]);
+});
 
 app.config(['$locationProvider', function($locationProvider) {
   $locationProvider.html5Mode(true);

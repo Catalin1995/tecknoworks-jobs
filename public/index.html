@@ -136,6 +136,44 @@
         </div>
       </div>
     </div>
+
+    <div class="modal fade" id="attachmentModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Add candidate</h4>
+          </div>
+          <div class="modal-body">
+
+            <div class='form-group'>
+              <label class='control-label'>Candidate</label>
+              <select class='selectpicker form-control' ng-model='selectedCandidate'>
+                <option ng-repeat='candidate in candidates' value='{{candidate.id}}'>{{ candidate.full_name }}</option>
+              </select>
+            </div>
+
+            <div class='form-group'>
+              <label class='control-label'>Interview</label>
+              <input class='form-control' type="file" nv-file-select uploader="uploader"/><br/>
+              <ul>
+                <li ng-repeat="item in uploader.queue">
+                  Name: <span ng-bind="item.file.name"></span><br/>
+                  <button type='button' ng-click='cancel(item)'class='btn btn-default btn-xs'>Cancel</button>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <span class='pull-left'> <b>Note:</b> When click upload all files will be uploaded </span>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success"  ng-click="uploadFile()">Upload</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <div class="container">
