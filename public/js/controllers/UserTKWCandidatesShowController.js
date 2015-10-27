@@ -16,6 +16,7 @@ app.controller('UserTKWCandidatesShowController', function ($scope, $http, $rout
     getAttachments();
     getInterviews();
     $scope.uploader.url = '/api/attachments' + generateUrlKey() + '&candidate_id=' + $scope.candidate.id
+    $scope.uploader.removeAfterUpload = true
   }).
   error(function(data, status, headers, config) {
     logged(data)
@@ -30,6 +31,18 @@ app.controller('UserTKWCandidatesShowController', function ($scope, $http, $rout
       logged(data)
     });
   };
+
+  $scope.uploadFile = function(item){
+    item.upload();
+    getAttachments();
+  }
+
+  $scope.cancel = function(item){
+    var index = $scope.uploader.queue.indexOf(item)
+    if (index > -1) {
+      $scope.uploader.queue.splice(index, 1);
+    }
+  }
 
   //########################## JOBS ##########################################
   getJob = function(){
