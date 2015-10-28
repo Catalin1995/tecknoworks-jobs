@@ -61,3 +61,36 @@ validatePhoneNumber = function(phoneNumber){
   var re = /^[0-9]{10}$/i;
   return re.test(phoneNumber);
 }
+
+validateCandidate = function(candidate){
+  createCandidateMsg = {};
+
+  if (!validateName(candidate['full_name'])){
+    createCandidateMsg['name'] = "* Minimum 3 characters(just letters and spaces)";
+  }
+
+  if (!validateEmailFormat(candidate['email'])){
+    createCandidateMsg['email'] = "* Invalid format";
+  }
+
+  if (!validatePhoneNumber(candidate['phone_number'])){
+    createCandidateMsg['phoneNumber'] = "* Invalid format(10 digits)";
+  }
+
+  if (candidate['source'] == null || candidate['source'] == ''){
+    createCandidateMsg['source'] = "* Source can't be nill";
+  }
+  return createCandidateMsg;
+}
+
+
+
+// Speed up calls to hasOwnProperty
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+function isEmpty(obj) {
+  for (var key in obj) {
+    if (hasOwnProperty.call(obj, key)) return false;
+  }
+  return true;
+}

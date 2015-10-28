@@ -24,7 +24,8 @@ app.controller('UserTKWCandidatesEditController', function ($scope, $http, $rout
   });
 
   $scope.saveCandidate = function(){
-    if (validateCandidate()){
+    $scope.createCandidateMsg = validateCandidate($scope.candidate)
+    if ( isEmpty($scope.createCandidateMsg) ){
       $scope.candidate['job_id'] = $scope.dictionaryJobs[$scope.select]
       $http.patch('api/candidates/' + $scope.candidate.id + generateUrlKey(), {candidate: $scope.candidate}).
       success(function(data, status, headers, config){
@@ -35,31 +36,6 @@ app.controller('UserTKWCandidatesEditController', function ($scope, $http, $rout
       });
     };
   };
-
-  validateCandidate = function(){
-    $scope.createCandidateMsg = {};
-    var ok = true
-    if (!validateName($scope.candidate['full_name'])){
-      $scope.createCandidateMsg['name'] = "* Minimum 3 characters(just letters and spaces)";
-      ok = false;
-    }
-
-    if (!validateEmailFormat($scope.candidate['email'])){
-      $scope.createCandidateMsg['email'] = "* Invalid format";
-      ok = false;
-    }
-
-    if (!validatePhoneNumber($scope.candidate['phone_number'])){
-      $scope.createCandidateMsg['phoneNumber'] = "* Invalid format(10 digits)";
-      ok = false;
-    }
-
-    if ($scope.candidate['source'] == null || $scope.candidate['source'] == ''){
-      $scope.createCandidateMsg['source'] = "* Source can't be nill";
-      ok = false;
-    }
-    return ok
-  }
 
   $scope.deleteCandidate = function(){
     $http.delete('/api/candidates/' + $scope.candidate.id  + generateUrlKey()).

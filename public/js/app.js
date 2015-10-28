@@ -9,6 +9,7 @@ app.controller('MainController', function($scope, $http, $routeParams, FileUploa
   $scope.candidates = [];
   $scope.selectedCandidate = null;
   $scope.uploader = new FileUploader();
+  $scope.createCandidateMsg = {};
 
   generateDictionaryJobs = function(){
     for (var i = 0; i<$scope.jobs.length; i++){
@@ -37,14 +38,20 @@ app.controller('MainController', function($scope, $http, $routeParams, FileUploa
   }
 
   $scope.addCandidate = function(){
-    $scope.candidate['job_id'] = $scope.dictionaryJobs[$scope.select]
-    $http.post('api/candidates' + generateUrlKey(), {candidate: $scope.candidate}).
-    success(function(data, status, headers, config){
-      window.location.href = "/user_tkw/jobs/" + data['body']['job_id'] + '/candidates/' + data['body']['id'];
-    }).
-    error(function(data, status, headers, config){
-    });
-  }
+    $scope.createCandidateMsg = validateCandidate($scope.candidate)
+    if ($scope.select == null){
+      $scope.createCandidateMsg['job'] = '* invalid job';
+    }
+    if ( isEmpty($scope.createCandidateMsg) ){
+      $scope.candidate['job_id'] = $scope.dictionaryJobs[$scope.select]
+      $http.post('api/candidates' + generateUrlKey(), {candidate: $scope.candidate}).
+      success(function(data, status, headers, config){
+        window.location.href = "/user_tkw/jobs/" + data['body']['job_id'] + '/candidates/' + data['body']['id'];
+      }).
+      error(function(data, status, headers, config){
+      });
+    };
+  };
 
   $scope.createInterview = function(){
     var timeString = generateTimeFormat($scope.data.date)
