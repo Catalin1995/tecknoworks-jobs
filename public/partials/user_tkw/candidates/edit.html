@@ -58,7 +58,7 @@
       </tr>
 
       <tr align="center" ng-repeat="attachment in attachments">
-        <td>{{file_name(attachment.file.file.url)}}</td>
+        <td>{{fileName(attachment.file.file.url)}}</td>
         <td>{{attachment.user_name}}</td>
         <td>
           <button type="button" class="btn btn-danger btn-sm" ng-disabled="userId != attachment.user_id" ng-click="deleteAttachment(attachment.id)">
