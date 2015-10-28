@@ -39,3 +39,25 @@ generateTimeFormat = function(time){
   return time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate() +
   ' ' + time.getHours() + ':' + time.getMinutes()
 }
+
+
+// VALIDATION
+
+// for candidate
+validateName = function(name){
+  if (name == null){
+    return false
+  }
+  var re = /^[a-zA-Z]{3,}$/i;
+  return re.test(name);
+}
+
+validateEmailFormat = function(email){
+  var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+  return re.test(email);
+}
+
+validatePhoneNumber = function(phoneNumber){
+  var re = /^[0-9]{10}$/i;
+  return re.test(phoneNumber);
+}

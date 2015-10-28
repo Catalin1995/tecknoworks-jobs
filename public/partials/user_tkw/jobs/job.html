@@ -14,23 +14,23 @@
       <h2> Add candidate for this job </h2>
 
       <div class="form-group">
-        <label class="control-label">Name</label>
-        <input type="text" class="form-control" placeholder="Name" ng-model="candidate.full_name" required>
+        <label class="control-label">Name</label> <span style='color: red;'> {{createCandidateMsg.name}}</span>
+        <input type="text" class="form-control" placeholder="Name" ng-model="candidate.full_name">
       </div>
 
       <div class="form-group">
-        <label class="control-label">Email</label>
-        <input type="email" class="form-control" placeholder="Email" ng-model="candidate.email" required>
+        <label class="control-label">Email</label> <span style='color: red;'> {{createCandidateMsg.email}}</span>
+        <input type="email" class="form-control" placeholder="Email" ng-model="candidate.email">
       </div>
 
       <div class="form-group">
-        <label lass="control-label">Phone Number</label>
-        <input type="text"class="form-control" placeholder="Phone Number" ng-model="candidate.phone_number" required>
+        <label lass="control-label">Phone Number</label> <span style='color: red;'> {{createCandidateMsg.phoneNumber}}</span>
+        <input type="text"class="form-control" placeholder="Phone Number" ng-model="candidate.phone_number">
       </div>
 
       <div class="form-group">
-        <label lass="control-label">Source</label>
-        <input type="text"class="form-control" placeholder="Source" ng-model="candidate.source" required>
+        <label lass="control-label">Source</label> <span style='color: red;'> {{createCandidateMsg.source}}</span>
+        <input type="text"class="form-control" placeholder="Source" ng-model="candidate.source">
       </div>
 
       <div class="form-group">
