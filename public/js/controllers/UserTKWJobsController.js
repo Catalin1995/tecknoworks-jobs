@@ -1,6 +1,7 @@
-app.controller('UserTKWJobsController', function ($scope, $http, $routeParams) {
+app.controller('UserTKWJobsController', function ($scope, $http, $routeParams, $timeout) {
   $scope.jobs = [];
   $scope.jobHashStatus = {};
+  $scope.msg = {};
 
   $scope.status = [
     {number: '0', text: 'DRAFT', },
@@ -9,6 +10,10 @@ app.controller('UserTKWJobsController', function ($scope, $http, $routeParams) {
     {number: '3', text: 'EXPIRED'},
     {number: '4', text: 'DASHBOARD'}
   ];
+
+  function removeMsg(id) {
+    $scope.msg[id] = '';
+  }
 
   $scope.save = function(id) {
     var job = {};
@@ -19,6 +24,10 @@ app.controller('UserTKWJobsController', function ($scope, $http, $routeParams) {
     }
     $http.put('/api/jobs/' + job.id + generateUrlKey(), {job: {description: job.description, status: $scope.jobHashStatus[job.id].number}}).
     success(function(data, status, headers, config) {
+      $scope.msg[data['body']['id']] = 'Saved!'
+      $timeout(function() {
+        removeMsg(id);
+      }, 2000)
     }).
     error(function(data, status, headers, config) {
       logged(data)

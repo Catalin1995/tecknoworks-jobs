@@ -28,6 +28,7 @@
           <select ng-change="save(job.id)" class="selectpicker form-control" ng-model="jobHashStatus[job.id].number">
             <option ng-repeat="stat in status" value="{{stat.number}}"> {{stat.text}} </option>
           </select>
+          <span style='color: green'>{{msg[job.id]}}</span>
         </td>
         <td>{{job.candidates_count}}</td>
         <td>{{job.candidates_without_interview}}</td>
