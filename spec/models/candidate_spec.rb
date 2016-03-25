@@ -24,6 +24,7 @@ RSpec.describe Candidate, type: :model do
     expect(candidate.email).to eq('email@example.com')
     expect(candidate.full_name).to eq('Full Name')
     expect(candidate.source).to eq('tkw user')
+    expect(candidate.status).to eq(0)
   end
 
   it 'invalid email format' do
@@ -53,4 +54,16 @@ RSpec.describe Candidate, type: :model do
       create :candidate, phone_number: '12231432'
     end.to raise_error { ActiveRecord::RecordInvalid }
   end
+
+  it 'validate status' do
+    candidate = create :candidate
+    expect(candidate.status).to eq(0)
+
+    candidate = create :candidate, status: 1
+    expect(candidate.status).to eq(1)
+
+    candidate = create :candidate, status: -1
+    expect(candidate.status).to eq(-1)
+  end
+
 end

@@ -5,6 +5,10 @@
     <h3> Email: {{candidate.email}} </h3>
     <h3> Job:<a ng-href="/user_tkw/jobs/{{job.id}}"> {{job.title}}</a></h3>
     <h3> Source: {{candidate.source}} </h3>
+    <h3> Status: {{candidate.string_status}} </h3>
+    <button type="button" class="btn btn-danger btn-md" ng-click="changeStatus(-1)"> Refuse </button>
+    <button type="button" class="btn btn-default btn-md" ng-click="changeStatus(0)"> None </button>
+    <button type="button" class="btn btn-success btn-md" ng-click="changeStatus(1)"> Accept </button>
   </div>
 
   <div class="col-md-6">
@@ -39,6 +43,8 @@
         </div>
       </div>
     </div>
+
+    <hr style="border: 1px solid #D9D9D9 ;" />
 
     <hr style="border: 1px solid #D9D9D9 ;" />
 

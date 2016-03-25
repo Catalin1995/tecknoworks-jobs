@@ -11,7 +11,7 @@ RSpec.describe CandidatesController, type: :controller do
 
   let(:consumer_key) { return @key.consumer_key }
   let(:secret_key) { return @key.secret_key }
-  let(:valid_candidate) { return { full_name: 'ionut', phone_number: '0722222222', email: 'test@example.com', job_id: @job.id, source: 'user_tkw' } }
+  let(:valid_candidate) { return { full_name: 'ionut', phone_number: '0722222222', email: 'test@example.com', job_id: @job.id, source: 'user_tkw', status: 1 } }
 
   describe 'GET index' do
     it 'when user is logged' do
@@ -109,6 +109,7 @@ RSpec.describe CandidatesController, type: :controller do
       expect(json[:body][:full_name]).to eq('ionut')
       expect(json[:body][:email]).to eq('test@example.com')
       expect(json[:body][:job_id]).to eq(@job.id)
+      expect(json[:body][:status]).to eq(1)
     end
 
     it 'when user is not logged' do
@@ -156,7 +157,7 @@ RSpec.describe CandidatesController, type: :controller do
 
   describe 'PATCH update' do
     it 'update a single field' do
-      candidate = create :candidate, job_id: @job.id
+      candidate = create :candidate, job_id: @job.id, status: -1
 
       patch :update, consumer_key: consumer_key, secret_key: secret_key, candidate: { full_name: 'cata' }, id: candidate.id, format: :json
       expect(json[:code]).to eq(200)
@@ -164,6 +165,7 @@ RSpec.describe CandidatesController, type: :controller do
       expect(json[:body][:phone_number]).to eq(candidate.phone_number)
       expect(json[:body][:email]).to eq(candidate.email)
       expect(json[:body][:job_id]).to eq(candidate.job_id)
+      expect(json[:body][:status]).to eq(candidate.status)
     end
 
     it 'update a single field when user is not logged' do
@@ -183,6 +185,7 @@ RSpec.describe CandidatesController, type: :controller do
       expect(json[:body][:phone_number]).to eq('0722222222')
       expect(json[:body][:email]).to eq('test@example.com')
       expect(json[:body][:job_id]).to eq(candidate.job_id)
+      expect(json[:body][:status]).to eq(1)
     end
 
     it 'job not exist' do

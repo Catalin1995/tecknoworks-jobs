@@ -51,7 +51,7 @@
         <td><b>Interviews</b></td>
         <td><b>#</b></td>
       </tr>
-      <tr align="center" ng-repeat="candidate in candidates">
+      <tr align="center" class="{{candidate.class}}" ng-repeat="candidate in candidates">
         <td><a ng-href="/user_tkw/jobs/{{job.id}}/candidates/{{candidate.id}}">{{candidate.full_name}}</a></td>
         <td>{{candidate.email}}</td>
         <td>{{candidate.phone_number}}</td>

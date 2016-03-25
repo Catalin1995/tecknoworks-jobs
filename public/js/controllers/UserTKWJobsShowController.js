@@ -32,6 +32,16 @@ app.controller('UserTKWJobsShowController', function ($scope, $http, $routeParam
     $http.get('api/candidates' + generateUrlKey() + '&job_id=' + $scope.job.id).
     success(function(data){
       $scope.candidates = data['body'];
+      $scope.copy_candidates = $scope.candidates
+      for(var i=0; i < $scope.copy_candidates.length; i++){
+        if ($scope.copy_candidates[i].status == 0){
+          $scope.copy_candidates[i]["class"] = "";
+        } else if ($scope.copy_candidates[i].status > 0) {
+          $scope.copy_candidates[i]["class"] = "success";
+        } else if ($scope.copy_candidates[i].status < 0) {
+          $scope.copy_candidates[i]["class"] = "danger";
+        }
+      }
     }).
     error(function(data){
       logged(data)
